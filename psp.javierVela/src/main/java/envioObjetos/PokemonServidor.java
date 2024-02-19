@@ -29,7 +29,7 @@ public class PokemonServidor {
 			
 			oos.writeObject("El entrenador Gary quiere luchar (Y/N)");;
 			
-			if(ois.readChar()=='y') {
+			if(ois.readObject().toString().charAt(0)=='y') {
 				if(r.nextInt(0,101)>50) {
 					pokemonOis.setNivel(pokemonOis.getNivel()+1);
 					System.out.println("Has ganado, tu pokemon ha subido al nivel: " + pokemonOis.getNivel());

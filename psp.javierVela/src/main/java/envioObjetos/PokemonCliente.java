@@ -23,19 +23,21 @@ public class PokemonCliente {
 			
 			oos.writeObject(pokemon);
 			
-			System.out.println("Se ha enviado al Pokemon: " + pokemon.getNombre() +
+			System.out.println("Se ha enviado al servidor el Pokemon: " + pokemon.getNombre() +
 					"\n\tVida: " + pokemon.getVida() + "\n\tNivel: " + pokemon.getNivel());
 			
 			ObjectInputStream ois = new ObjectInputStream(cliente.getInputStream());
 			
 			System.out.println(ois.readObject());
 			
-			if((""+sc.nextLine().charAt(0)).toLowerCase().equals("y")) {
+			char resp = sc.nextLine().charAt(0);
+			
+			if(resp=='y') {
 				
-				oos.writeChar('y');
+				oos.writeObject('y');
 				
 			}else {
-				oos.writeChar('n');
+				oos.writeObject('n');
 			}
 			
 			pokemon = (Pokemon) ois.readObject();
